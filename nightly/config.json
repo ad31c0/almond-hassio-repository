@@ -1,8 +1,8 @@
 {
-  "name": "Almond",
-  "version": "nightly",
+  "name": "Almond - Edge",
+  "version": "edge",
   "slug": "almond",
-  "description": "The home server version of Almond",
+  "description": "The home server version of Almond (edge builds)",
   "url": "https://github.com/home-assistant/hassio-addons/blob/master/almond",
   "arch": ["armv7", "aarch64", "amd64"],
   "startup": "application",
@@ -16,5 +16,5 @@
   "homeassistant_api": true,
   "options": {},
   "schema": {},
-  "image": "ad31c0/almond-hassio-addon/{arch}-nightly"
+  "image": "ad31c0/almond-hassio-addon/{arch}-edge"
 }
