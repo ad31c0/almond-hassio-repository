@@ -4,4 +4,4 @@ set -e
 set -x
 echo "Running in $(pwd)"
 
-docker run --rm --name hassio-builder --privileged -v $(pwd):/data -v /var/run/docker.sock:/var/run/docker.sock:ro homeassistant/amd64-builder -t /data --all -i almond-hassio-addon --release-tag {arch}-${DOCKER_TAG}
+docker run --rm --name hassio-builder --privileged -v $(pwd):/data -v /var/run/docker.sock:/var/run/docker.sock:ro homeassistant/amd64-builder -t /data --all -i almond-hassio-addon/{arch} --release-tag
