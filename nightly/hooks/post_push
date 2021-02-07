@@ -10,5 +10,9 @@ case $DOCKER_TAG in
 		version=${version}-beta
 		;;
 esac
-docker tag $IMAGE_NAME $DOCKER_REPO:$version
-docker push $DOCKER_REPO:$version
+
+echo ${version}
+env
+
+#docker tag $IMAGE_NAME $DOCKER_REPO:$version
+#docker push $DOCKER_REPO:$version
