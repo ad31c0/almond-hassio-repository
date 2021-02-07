@@ -4,9 +4,7 @@ The purpose of this Repository is to have a Development version of the Almond Ha
 
 ## Versions available
 
-nightly
-alpha
-beta
+- nightly
 
 ## How to install this Hass.io add-on
 
