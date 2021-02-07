@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Update Almond to 2.0.0 Alpha
+
 ## 1.0.1
 
 - Keep unzip dependency installed
