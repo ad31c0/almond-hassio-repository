@@ -3,5 +3,9 @@
 set -e
 set -x
 echo "Running in $(pwd)"
+env
 
-docker run --rm --name hassio-builder --privileged -v $(pwd):/data -v /var/run/docker.sock:/var/run/docker.sock:ro homeassistant/amd64-builder -t /data --all --test -i almond-hassio-addon/{arch}
+archs="armv7"
+for arch in ${archs}; do
+	docker run --rm --name hassio-builder --privileged -v $(pwd):/data -v /var/run/docker.sock:/var/run/docker.sock:ro homeassistant/amd64-builder -t /data --all --armv7 -i almond-hassio-addon --release ${arch}-nightly
+done
