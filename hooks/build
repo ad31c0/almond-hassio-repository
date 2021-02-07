@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+set -x
+echo "Running in $(pwd)"
+
+case $DOCKER_TAG in
+	*-nightly)
+		type="nightly"
+	;;
+	*-alpha)
+		type="alpha"
+	;;
+	*-beta)
+		type="beta"
+	;;
+esac
+
+docker run --rm -ti --name hassio-builder --privileged -v $(pwd)/${type}:/data -v /var/run/docker.sock:/var/run/docker.sock:ro homeassistant/amd64-builder -t /data --test -i almond-addon-{arch} -d local
