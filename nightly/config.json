@@ -16,5 +16,5 @@
   "homeassistant_api": true,
   "options": {},
   "schema": {},
-  "image": "ad31c0/almond-hassio-addon/{arch}-edge"
+  "image": "adev31c0/almond-hassio-addon/{arch}-edge"
 }
