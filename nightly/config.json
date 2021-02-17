@@ -1,9 +1,9 @@
 {
-  "name": "Almond - Edge",
+  "name": "Almond 2.0 - Edge",
   "version": "edge",
   "slug": "almond-edge",
-  "description": "The home server version of Almond (edge builds)",
-  "url": "https://github.com/home-assistant/hassio-addons/blob/master/almond",
+  "description": "The home server version of Almond 2.0 (edge builds)",
+  "url": "https://github.com/stanford-oval/almond-hassio-repository/blob/master/edge",
   "arch": ["armv7", "aarch64", "amd64"],
   "startup": "application",
   "init": false,
@@ -16,5 +16,5 @@
   "homeassistant_api": true,
   "options": {},
   "schema": {},
-  "image": "adev31c0/almond-hassio-addon/{arch}-edge"
+  "image": "adev31c0/almond-hassio-addon-{arch}"
 }
