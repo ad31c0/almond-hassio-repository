@@ -17,6 +17,8 @@ RUN \
         libpulse-dev \
         libatlas-base-dev \
         pkg-config \
+        gettext \
+        zip \
         git \
         gnupg \
         nginx \
@@ -40,18 +42,13 @@ RUN \
     \
     && git clone -b "${ALMOND_VERSION}" --depth 1 \
         "https://github.com/stanford-oval/almond-server" . \
-    && rm -fr .git \
-    && yarn \
+    && rm -fr .git && \
+    npm ci && \
+    npm install --no-package-lock --ignore-scripts snowboy && \
+    cd node_modules/snowboy/ && \
+    PYTHON=python2 npx node-pre-gyp clean configure && \
+    make -C build/ \
     \
-    && yarn global add modclean \
-    && modclean \
-        --path /opt/almond \
-        --no-progress \
-        --keep-empty \
-        --run \
-    && yarn global remove modclean \
-    \
-    && yarn cache clean \
     && apt-get purge -y --auto-remove \
         build-essential \
         libcanberra-dev \
