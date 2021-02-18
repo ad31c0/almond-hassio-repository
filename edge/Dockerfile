@@ -10,6 +10,10 @@ ENV \
 WORKDIR /opt/almond
 ARG ALMOND_VERSION
 
+RUN adduser --disabled-password almond && \
+   chown almond:almond /opt/almond
+WORKDIR /opt/almond
+
 RUN \
     set -x \
     && apk add --no-cache \
@@ -21,32 +25,35 @@ RUN \
         blas \
         sqlite \
         coreutils \
+        libcanberra \
+        libpulse \
+        pulseaudio \
+        gettext \
+        zip \
+        sudo \
     && apk add --no-cache --virtual .build-dependencies \
         build-base \
         blas-dev \
+        libcanberra-dev \
+        pulseaudio-dev \
         git \
         linux-headers \
         sqlite-dev \
         pkgconf \
-        python3 \
+        python2 \
     \
     && npm config set unsafe-perm \
-    && ln -s /usr/bin/python3 /usr/bin/python \
     \
-    && git clone -b "${ALMOND_VERSION}" --depth 1 \
-        "https://github.com/stanford-oval/almond-server" . \
-    && rm -fr .git \
-    && yarn \
-    \
-    && yarn global add modclean \
-    && modclean \
-        --path /opt/almond \
-        --no-progress \
-        --keep-empty \
-        --run \
-    && yarn global remove modclean \
-    \
-    && yarn cache clean \
+    && sudo -u almond git clone -b "${ALMOND_VERSION}" --depth 1 \
+        "https://github.com/stanford-oval/almond-server" . && \
+    sudo -u almond npm ci && \
+    sudo -u almond npm install --no-package-lock --ignore-scripts snowboy && \
+    cd node_modules/snowboy/ && \
+    sudo -u almond PYTHON=python2 npx node-pre-gyp clean configure && \
+    sudo -u almond make -C build/ && \
+    rm -fr /home/almond/.cache && \
+    rm -fr /home/almond/.npm && \
+    mkdir /home/almond/.cache \
     && apk del --no-cache \
         .build-dependencies \
     \
