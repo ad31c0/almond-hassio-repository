@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+set -x
+
+NOW=$(date +%m%d%Y)
+
+sed s@"\"version\": \".*\""@"\"version\": \"edge-${NOW}\""@ $(pwd)/config.json
+git commit -a "Edge Build ${NOW}"
+git push -u origin master
