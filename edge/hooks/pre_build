@@ -6,5 +6,5 @@ set -x
 NOW=$(date +%m%d%Y)
 
 sed -i s@"\"version\": \".*\""@"\"version\": \"edge-${NOW}\""@ $(pwd)/config.json
-git commit "Edge Build ${NOW}"
+git commit -m "Edge Build ${NOW}"
 git push -u origin master
