@@ -6,5 +6,5 @@ echo "Running in $(pwd)"
 
 archs="armv7 amd64"
 for arch in ${archs}; do
-	docker run --rm --name hassio-builder --privileged -v $(pwd):/data -v /var/run/docker.sock:/var/run/docker.sock:ro homeassistant/amd64-builder -t /data --${arch} -i almond-hassio-addon-{arch} --no-latest
+	docker run --rm --name hassio-builder --privileged -v $(pwd):/data -v /var/run/docker.sock:/var/run/docker.sock:ro homeassistant/amd64-builder -t /data --${arch} --test -i almond-hassio-addon-{arch} --no-latest
 done

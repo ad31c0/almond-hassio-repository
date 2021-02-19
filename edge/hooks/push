@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+set -x
+echo "Running in $(pwd)"
+env
+
+archs="armv7 amd64"
+for arch in ${archs}; do
+	docker push adev31c0/almond-hassio-addon-${arch}
+done
