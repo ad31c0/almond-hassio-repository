@@ -5,7 +5,8 @@ set -x
 
 NOW=$(date +%m%d%Y)
 
-sed -i s@"\"version\": \".*\""@"\"version\": \"edge-${NOW}\""@ $(pwd)/config.json
+sed -i s@"\"version\": \".*\""@"\"version\": \"edge-${NOW}\""@ ./config.json
+git add config.json
 git config user.email "you@example.com"
 git config user.name "Your Name"
 git commit -m "Edge Build ${NOW}"
