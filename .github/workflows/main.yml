@@ -16,7 +16,7 @@ jobs:
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
       - name: Fetch release version
         run: |
-          REV=$(git ls-remote https://github.com/stanford-oval/almond-server refs/heads/master | cut -c1-6)
+          REV=$(git ls-remote https://github.com/stanford-oval/almond-server refs/heads/master | cut -c1-7)
           sed -i 's@"version":.*@"version": "edge-'${REV}'",@' edge/config.json
       - name: Check for modified files
         id: git-check
@@ -24,7 +24,8 @@ jobs:
       - name: Commit latest release version
         if: steps.git-check.outputs.modified == 'true'
         run: |
-          git config --global user.name 'Your Name'
+          FV=$(grep -oe '"edge-\(.*\)' edge/config.json)
+          git config --global user.name 'buildbot'
           git config --global user.email 'your-email@users.noreply.github.com'
-          git commit -am "Release version ${REV}"
+          git commit -am "Release version ${FV}"
           git push
