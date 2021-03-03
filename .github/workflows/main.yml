@@ -24,7 +24,7 @@ jobs:
       - name: Commit latest release version
         if: steps.git-check.outputs.modified == 'true'
         run: |
-          FV=$(grep -oe '"edge-\(.*\)' edge/config.json)
+          FV=$(grep -oe '"edge-\(.*\)"' edge/config.json | cut -d'"' -f2)
           git config --global user.name 'buildbot'
           git config --global user.email 'your-email@users.noreply.github.com'
           git commit -am "Release version ${FV}"
