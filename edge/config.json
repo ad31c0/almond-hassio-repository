@@ -14,7 +14,7 @@
   "homeassistant": "0.102.0",
   "homeassistant_api": true,
   "ports": {
-    "9320/tcp": "Used for webui"
+    "9320/tcp": 9320
   },
   "options": {},
   "schema": {},
