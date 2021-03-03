@@ -1,6 +1,6 @@
 {
   "name": "Almond - Edge",
-  "version": "edge",
+  "version": "edge-015e9e"
   "slug": "edge",
   "description": "The home server version of Almond 2.0 (edge builds)",
   "url": "https://github.com/home-assistant/hassio-addons/blob/master/almond/edge",
@@ -8,13 +8,13 @@
   "init": false,
   "discovery": ["almond"],
   "webui": "http://[HOST]:[PORT:9320]",
-  "ingress": false,
+  "ingress": true,
   "audio": true,
   "panel_icon": "mdi:comment-eye-outline",
   "homeassistant": "0.102.0",
   "homeassistant_api": true,
   "ports": {
-    "9320/tcp": 9320
+    "9320/tcp": "Used for webui"
   },
   "options": {},
   "schema": {},
