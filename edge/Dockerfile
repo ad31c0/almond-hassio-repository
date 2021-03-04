@@ -22,8 +22,10 @@ RUN \
     && apt-get install -y --no-install-recommends \
         build-essential \
         libcanberra-dev \
+        libcanberra0 \
         libpulse-dev \
         libatlas-base-dev \
+        libatlas3-base \
         pkg-config \
         git \
         gnupg \
