@@ -37,6 +37,7 @@ RUN \
         gettext \
         zip \
         sudo \
+        wget \
     \
     && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key \
         | apt-key add - \
