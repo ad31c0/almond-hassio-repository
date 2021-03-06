@@ -9,7 +9,7 @@ if [ -f "/ssl/fullchain.pem" ] && [ -f "/ssl/privkey.pem" ]; then
         -e "s@{SSL_CERTFILE}@/ssl/fullchain.pem@" \
         -e "s@{SSL_PRIVKEY}@/ssl/privkey.pem@" \
         -e "s/9320 default_server;/9320 ssl default_server;/" \
-        /etc/nginx/nginx.conf
+        -i /etc/nginx/nginx.conf
 fi
 
 exec nginx
