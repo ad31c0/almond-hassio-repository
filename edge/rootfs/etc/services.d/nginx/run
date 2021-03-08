@@ -5,8 +5,8 @@
 
 SSL_CERTFILE="/ssl/fullchain.pem"
 SSL_KEYFILE="/ssl/privkey.pem"
-if bashio::config.has_value "ssl.certfile"; then SSL_CERTFILE=$(bashio::config 'ssl.certfile'); fi
-if bashio::config.has_value "ssl.keyfile"; then SSL_KEYFILE=$(bashio::config 'ssl.keyfile'); fi
+if bashio::config.has_value "ssl.certfile"; then SSL_CERTFILE="/ssl/$(bashio::config 'ssl.certfile')"; fi
+if bashio::config.has_value "ssl.keyfile"; then SSL_KEYFILE="/ssl/$(bashio::config 'ssl.keyfile')"; fi
 
 # Check if SSL is enabled and modify nginx config accordingly
 if [ -f "${SSL_CERTFILE}" ] && [ -f "${SSL_KEYFILE}" ]; then

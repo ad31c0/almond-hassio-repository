@@ -21,13 +21,13 @@
     "ssl": {
       "certfile": "fullchain.pem",
       "keyfile": "privkey.pem"
-    },
+    }
   },
   "schema": {
     "ssl": {
       "certfile": "str",
       "keyfile": "str"
-    },
+    }
   },
   "image": "adev31c0/almond-hassio-addon-{arch}"
 }
