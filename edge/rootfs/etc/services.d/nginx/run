@@ -11,8 +11,8 @@ if bashio::config.has_value "ssl.keyfile"; then SSL_KEYFILE="/ssl/$(bashio::conf
 # Check if SSL is enabled and modify nginx config accordingly
 if [ -f "${SSL_CERTFILE}" ] && [ -f "${SSL_KEYFILE}" ]; then
     sed -e "s/#\(ssl_.*\)/\1/" \
-        -e "s@{SSL_CERTFILE}@/ssl/${SSL_CERTFILE}@" \
-        -e "s@{SSL_KEYFILE}@/ssl/${SSL_KEYFILE}@" \
+        -e "s@{SSL_CERTFILE}@${SSL_CERTFILE}@" \
+        -e "s@{SSL_KEYFILE}@${SSL_KEYFILE}@" \
         -e "s/9320 default_server;/9320 ssl default_server;/" \
         -i /etc/nginx/nginx.conf
 fi
