@@ -5,6 +5,8 @@ set -x
 
 NOW=$(date +%m%d%Y)
 
+docker run --rm --privileged multiarch/qemu-user-static:register --reset
+
 #sed -i s@"\"version\": \".*\""@"\"version\": \"edge-${NOW}\""@ ./config.json
 #git add config.json
 #git config user.email "you@example.com"
