@@ -6,6 +6,7 @@ set -x
 NOW=$(date +%m%d%Y)
 
 #docker run --rm --privileged multiarch/qemu-user-static:register --reset --persistent yes
+update-binfmts --display
 
 uname -a
 
