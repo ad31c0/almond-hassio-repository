@@ -4,7 +4,7 @@ set -e
 set -x
 echo "Running in $(pwd)"
 
-docker run --rm --privileged multiarch/qemu-user-static --reset --persistance yes
+docker run --rm --privileged multiarch/qemu-user-static --persistent yes
 
 archs="aarch64"
 for arch in ${archs}; do
